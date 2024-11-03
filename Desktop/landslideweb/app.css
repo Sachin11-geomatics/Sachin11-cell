@@ -1,0 +1,121 @@
+.contact-info i {
+    margin-right: 5px; /* Adjust the value as needed for spacing */
+
+}
+
+
+  
+  .map-container {
+    min-height: 800px; /* Minimum height for the map, adjust as needed */
+    position: relative;
+    min-width:auto; /* Necessary for absolute positioning */
+  }
+  
+  #map {
+    width: auto; /* Full width of the map container */
+    height: 800px; /* Set a specific height for the map */
+  }
+  
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: #ff6600; /* Change to your desired color */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 60px;
+    line-height: auto; /* Align the text vertically within the navbar */
+  }
+  
+  /* Other styles remain the same as before */
+  
+  
+  .leaflet-control-layers {
+    background-color: #f0e7b8; /* Background color */
+    border-radius: 30px; /* Rounded corners */
+  }
+  
+  .leaflet-control-layers-expanded {
+    font-size: 30px; /* Font size */
+    color: #f84141; /* Font color */
+  }
+  
+  .leaflet-control-layers-expanded label {
+    font-size: 14px; /* Font size for labels */
+    color: #ff3838; /* Font color for labels */
+  }
+  
+  .leaflet-control-layers-expanded .leaflet-control-layers-list {
+    padding: 6px; /* Padding around the list */
+  }
+  
+  .leaflet-control-layers-toggle:after {
+    color: #260638; /* Color of the toggle button icon */
+  }
+  
+  .legend {
+    background: rgba(241, 244, 160, 0.805);
+    padding: 7px;
+    box-shadow: 0 0 15px rgba(172, 6, 6, 0.621);
+    border-radius: 20px;
+    font-size: 30px;
+    font-family: "Times New Roman", Times, serif;
+  }
+  .describe {
+    background: rgba(241, 244, 160, 0.805);
+    padding: 7px;
+    box-shadow: 0 0 15px rgba(172, 6, 6, 0.621);
+    border-radius: 20px;
+    font-size: 30px;
+    font-family: "Times New Roman", Times, serif;
+  }
+  .legend table {
+    width: 80%;
+  }
+  
+  .legend img {
+    vertical-align: bottom;
+    margin-right: 2px;
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 96%;
+    left: 94px;
+    background: rgba(233, 245, 126, 0.866);
+    padding: 2px;
+    border-radius: 15px;
+    z-index: 1000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+  }
+  
+  .legend-collapsed {
+    display: none;
+  }
+  
+  .legend-expanded {
+    display: block;
+  }
+  
+ 
+.factor-layer-option {
+    cursor: pointer;
+    padding: 10px;
+    color: black; /* Default text color */
+}
+
+.factor-layer-option.active {
+    background-color: white; /* Background color for active state */
+    color: black; /* Text color when active */
+}
+.emergency-contact {
+  font-size: 1.2em; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  padding-left: 10px;
+  font-family: "Times New Roman", Times, serif;
+}
+#chartdiv {
+  height: 210px;
+  width: 400px;
+  padding-top: 30px;
+  padding-right: 10px;
+}

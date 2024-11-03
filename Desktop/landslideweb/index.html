@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Landslide Assessment Toolkit</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+    <!-- Fonts and icons -->
+    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="assets/css/demo.css" />
+  </head>
+   
+<body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="index.html" class="logo" >
+              <img
+                src="logo.png"
+                alt="navbar brand"
+               
+                height='100px'
+                width="200"
+                position="'relative"
+                
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item active">
+                <a
+                  href="index.html"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-home"></i>
+                  <p style="font-size: 1.1em;">Home</p>
+                  <span class="caret"></span>
+                </a>
+                
+                </li>
+                <li class="nav-item active">
+                  
+                  <a data-bs-toggle="collapse" href="#tables">
+                    <i class="bi bi-telephone"></i> 
+                    <p  style="font-size: 1.4em; font-weight: bold; padding: 5px; font-family: Times New Roman, Times, serif;">Emergency Contact </p>
+                    <span class="caret"></span>
+                  </a>
+                  <div class="collapse" id="tables">
+                    <ul class="nav nav-collapse">
+                      <li>
+                        <a  href="tel:100">
+                          <img
+                          src="police.png"
+                          alt="navbar brand"
+                         
+                          height='30px'
+                          width=auto;
+                          position="'relative"
+                          
+                        />
+                          <span class="emergency-contact">Police-100</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a  href="tel:101">
+                          <img
+                          src="FireBrigade.png"
+                          alt="navbar brand"
+                         
+                          height='30px'
+                          width=auto;
+                          position="'relative"
+                          
+                        />
+                          <span class="emergency-contact">Fire Brigade -101</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a  href="tel:102">
+                          <img
+                          src="ambulance.png"
+                          alt="navbar brand"
+                         
+                          height='20px'
+                          width=auto;
+                          position="'relative"
+                          
+                        />
+                          <span class="emergency-contact">Ambulance -102</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a  href="tel:103">
+                          <img
+                          src="Traffic.png"
+                          alt="navbar brand"
+                         
+                          height='30px'
+                          width=auto;
+                          position="'relative"
+                          
+                        />
+                          <span class="emergency-contact">Traffic Support -103</span>
+                        </a>
+                      </li>
+                  </div>
+                </li>
+                 
+                 
+                  </li>
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Details</h4>
+              </li>
+              
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#baseLayer" class="collapse-toggle" data-target="#overlays">
+                    <i class="fas fa-layer-group"></i>
+                    <p>Base Layer</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="baseLayer">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="#" class="base-layer-option">
+                                <span class="sub-item">OSM</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="base-layer-option">
+                                <span class="sub-item">Dark</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="base-layer-option">
+                                <span class="sub-item">Google Satellite</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="base-layer-option">
+                                <span class="sub-item">Google Street</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a data-bs-toggle="collapse" href="#overlays" class="collapse-toggle" data-target="#baseLayer">
+                  <i class="fas fa-layer-group"></i>
+                  <p>Points</p>
+                  <span class="caret"></span>
+              </a>
+              <div class="collapse" id="overlays">
+                  <ul class="nav nav-collapse">
+                      <li>
+                          <a href="#" class="overlay-layer-option">
+                              <span class="sub-item">Study Area</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="overlay-layer-option">
+                              <span class="sub-item">Landslide Points</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="overlay-layer-option">
+                              <span class="sub-item">Non-Landslide Points</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+          
+                      
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#factors" class="collapse-toggle" data-target="#baseLayer">
+                  <i class="fas fa-layer-group"></i>
+                  <p>Causative Factors</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="factors">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="#" class="factor-layer-option">
+                        <span class="sub-item">LULC</span>
+                      </a>
+                      
+                    </li>
+                    
+                    <li>
+                      <a href="#" class="factor-layer-option">
+                        <span class="sub-item">Geology</span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="#" class="factor-layer-option">
+                        <span class="sub-item">Soil</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#" class="factor-layer-option">
+                        <span class="sub-item">NDVI</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item" style="margin-top: 370px;">
+                <a href="#" class="fund-us" style="text-align: center; color: #fff; background-color: #46406efb; padding: 10px; font-size: 20px; border-radius: 30px; display: block;">
+                   <strong>Fund Us</strong>
+                   
+                </a>
+             </li>
+             
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="index.html" class="logo">
+                <img
+                src="logo.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="80"
+              />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav class="navbar navbar-fixed-top" role="navigation" style="background-color:#eee5c0;height:90px">
+            <div class="container-fluid">
+          
+             
+              <div class="navbar-brand"><h1 style="color:tomato; font-family: 'Times New Roman', Times, serif;font-size: 32px;"><b><b><u>LANDSLIDE  ASSESSMENT  TOOLKIT</u></b> </b></h1></div>
+              <img src="logo.png" alt="Profile Image" class="avatar-img rounded-circle" style="width: 100px; height: 100px; position: absolute; top: -3px; right: 300px;">
+              <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"></nav>
+          
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                    <a class="dropdown-toggle profile-pic d-flex align-items-center" data-bs-toggle="dropdown" href="#" aria-expanded="false">
+                        <div class="avatar-sm d-flex justify-content-end align-items-center" style="position: relative;">
+                            <!-- Set img size with inline CSS or Bootstrap classes
+                            <img src="contact.png" alt="Profile Image" class="avatar-img rounded-circle" style="width: 25px; height: 25px; position: absolute; top: 12px; right: 160px;"> -->
+                        </div>
+                        <span class="profile-username ms-2"style="width: 25px; height: 25px; position: absolute; top: 10px; right: 140px;">
+                            
+                            <h3 style="margin: 0; color:rgb(7, 56, 217); font-family: 'Times New Roman', Times, serif;font-size: 25px; "><b>Contact Us</b></h3>
+                        </span>
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <ul class="dropdown-menu dropdown-user animated fadeIn" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
+                        <li>
+                           <div class="contact-info">
+    
+                                  <i class="fa fa-envelope"></i><a href="mailto:sachinrayamajhi011@gmail.com"> sachinrayamajhi011@gmail.com</a></a><br>
+                                  <i class="fa fa-phone"></i><a  href="+977 9812989993">  +977 9812989993 </a> <br>
+                                  <i class="fa fa-map-marker-alt"></i>   Lamachaur, Pokhara, Nepal
+                                </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </div>
+          </nav>
+          
+          <!-- End Navbar -->
+           </div>
+
+           <div class="container">
+            <div class="page-inner">
+              <div
+                class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+              >
+                
+              </div>
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <div class="card card-stats card-round">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-icon">
+                          <div
+                            class="icon-big text-center icon-primary bubble-shadow-small"
+                          >
+                          <img
+                          src="area.png"
+                          alt="image profile"
+                          class="avatar-img rounded"
+                        />
+                          </div>
+                        </div>
+                        <div class="col col-stats ms-3 ms-sm-0">
+                          <div class="numbers">
+                            <h2 class="card-category" style="color:black;"><b>Area</b></h2>
+                            <h4 class="card-title">0 sq.km.</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="card card-stats card-round">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-icon">
+                          <div
+                            class="icon-big text-center icon-info bubble-shadow-small"
+                          >
+                          
+                          <img
+                          src="pop.png"
+                          alt="image profile"
+                          class="avatar-img rounded"
+                        />
+                          </div>
+                        </div>
+                        <div class="col col-stats ms-3 ms-sm-0">
+                          <div class="numbers">
+                            <h2 class="card-category" style="color:black;"><b>Population</b></h2>
+                            <h4 class="card-title">0</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="card card-stats card-round">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-icon">
+                          <div
+                            class="icon-big text-center icon-success bubble-shadow-small"
+                          >
+                          <img
+                          src="slide.png"
+                          alt="image profile"
+                          class="avatar-img rounded"
+                        />
+                          </div>
+                        </div>
+                        <div class="col col-stats ms-3 ms-sm-0">
+                          <div class="numbers">
+                            <h2 class="card-category" style="color:black;"><b>Landslide Points</b></h2>
+                            <h4 class="card-title">314</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="card card-stats card-round">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-icon">
+                          <div
+                            class="icon-big text-center icon-secondary bubble-shadow-small"
+                          >
+                          <img
+                          src="non.png"
+                          alt="image profile"
+                          class="avatar-img rounded"
+                        />
+                          </div>
+                        </div>
+                        <div class="col col-stats ms-3 ms-sm-0">
+                          <div class="numbers">
+                            <h2 class="card-category" style="color:black;"><b>Non-Landslide Points</b></h2>
+                            <h4 class="card-title">314</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Map -->
+              <div class="row">
+                <div class="col-md-8">
+                    <div class="card card-round">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div class="card-title">
+                                    <h1><b>Map</b></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="map-container">
+                                <div id="map"></div> <!-- Leaflet map will be rendered here -->
+                                <div id="controls"></div>
+                            </div>
+                            <div id="myChartLegend"></div> <!-- Legend or additional info can go here -->
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Legend Card -->
+                <div class="col-md-4">
+                    <div class="card card-primary card-round" style="background-color: rgb(0, 0, 0);">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div style="color: rgb(255, 255, 255); font-family: 'Times New Roman', Times, serif; font-size: 25px;">
+                                    <b>LEGEND</b>
+                                </div>
+                                <div class="card-tools">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-label-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i style="color: rgb(0, 0, 0); font-family: 'Times New Roman', Times, serif; font-size: 18px;"><b>Export</b></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#" onclick="downloadLegend('pdf')">PDF</a>
+                                            <a class="dropdown-item" href="#" onclick="downloadLegend('png')">PNG</a>
+                                            <a class="dropdown-item" href="#" onclick="downloadLegend('jpg')">JPG</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" id="legend" style="background-color: rgb(231, 222, 222);">
+                            <!-- Legend will be populated here -->
+                        </div>
+                    </div>
+            
+                    <!-- Description Card-->
+                    <div class="card card-primary card-round mt-5" style="background-color: rgb(0, 0, 0);">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div style="color: rgb(255, 255, 255); font-family: 'Times New Roman', Times, serif; font-size: 25px;">
+                                    <b>DESCRIPTION</b>
+                                </div>
+                                <div class="card-tools">
+                                  <div class="dropdown">
+                                      <button class="btn btn-sm btn-label-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i style="color: rgb(0, 0, 0); font-family: 'Times New Roman', Times, serif; font-size: 18px;"><b>Export</b></i>
+                                      </button>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="#" onclick="downloaddescribe('pdf')">PDF</a>
+                                          <a class="dropdown-item" href="#" onclick="downloaddescribe('png')">PNG</a>
+                                          <a class="dropdown-item" href="#" onclick="downloaddescribe('jpg')">JPG</a>
+                                      </div>
+                                  </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="card-body" id="describe" style="background-color: rgb(231, 222, 222);">
+                      <!-- describtion will be populated here -->
+                  </div>
+                </div>
+            </div>
+            
+              </div>
+              
+                          
+                    </div>
+</div><div class="marquee" style="overflow: hidden; white-space: nowrap; position: fixed; bottom: 0; width: auto; background-color: #84efe8; z-index: 999;">
+  <p style="display: inline-block; padding: 0px; font-family: Arial, sans-serif; font-size: 18px; color: rgb(52, 14, 14); margin: 0;">
+      If you want any data in any format, <strong>Contact Us. +977 9812989993 &nbsp; &nbsp; </strong> <em>Note: It may be payable.  </em>
+  </p>
+</div>
+
+<style>
+  .marquee {
+      animation: marquee 7s linear infinite;
+  }
+
+  @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+  }
+</style>
+
+                 
+     
+        
+    <!--   Core JS Files   -->
+       <!-- link to the js files -->
+        
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="supagrid.js" type="text/javascript"></script>
+<script src="leaflet.table.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-3d"></script>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="lib/L.Geoserver.js"></script>
+<script src="app.js"></script>
+    <script src="assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
+<!-- 
+    Bootstrap Notify -->
+    <!-- "assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script> -->
+     <script src="assets/js/snippet.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="assets/js/setting-demo.js"></script>
+    <script src="assets/js/demo.js"></script>
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#notifyButton').on('click', function() {
+                $.notify({
+                    content: {
+                        title: "Success!",
+                        message: "This is a notification message.",
+                        icon: "fas fa-check-circle"
+                    },
+                    type: "success",
+                    delay: 3000, // Notification will disappear after 3 seconds
+                    showProgressbar: true
+                });
+            });
+        });
+    </script>
+           
+</body>
+</html>
+
